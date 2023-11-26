@@ -116,6 +116,7 @@
           %}
         </aside>
       {%- endif -%} -->
+      {{ 'filters.css' | asset_url | stylesheet_tag }}
       {% render 'collection-filters' %}
       <div class="product-grid-container" id="ProductGridContainer">
         {%- if collection.products.size == 0 -%}
