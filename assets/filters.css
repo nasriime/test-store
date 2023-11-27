@@ -36,11 +36,22 @@ form.collection .collection--filters details > div {
   padding: 10px 40px 25px;
   border-radius: 5px;
 }
+form.collection .collection--filters details ul {
+  list-style: none;
+  padding-left: 0;
+}
 form.collection .collection--filters details input {
+  cursor: pointer;
   border-radius: 7px;
   padding: 5px 10px;
   font-size: 15px;
 }
 form .filter-group-display__price-range {
   margin-bottom: 15px;
+}
+form .filter-group-display__price-range-from {
+  margin-bottom: 10px;
+}
+form .filter-group-display__price-range-to {
+  margin-bottom: 30px;
 }

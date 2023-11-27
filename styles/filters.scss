@@ -51,7 +51,13 @@ form {
                     border-radius: 5px;
                 }
 
+                ul {
+                    list-style: none;
+                    padding-left: 0;
+                }
+
                 input {
+                    cursor: pointer;
                     border-radius: 7px;
                     padding: 5px 10px;
                     font-size: 15px;
@@ -63,6 +69,14 @@ form {
 
     .filter-group-display__price-range {
         margin-bottom: 15px;
+    }
+
+    .filter-group-display__price-range-from {
+        margin-bottom: 10px;
+    }
+
+    .filter-group-display__price-range-to {
+        margin-bottom: 30px;
     }
 
 }
