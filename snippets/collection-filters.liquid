@@ -1,7 +1,11 @@
+{%- liquid
+  assign total_active_values = 0
+-%}
 <form class="collection page-width">
   <div class="collection--filters">
     <p class="collection--filters-title">Filter: </p>
     {%- for filter in collection.filters -%}
+      {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
       <details>
         <summary>
           <div>
@@ -163,29 +167,34 @@
     </span>
   </div>
   <div>
-    <p class="collection--filters-clear"><a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">Clear all</a></p>
-    <p class="collection--filters-summary">Filters Summary</p>
-
-    {%- for filter in collection.filters -%}
-      {%- if filter.type == "price_range" -%}
-        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
-          <p>
-            <a href="{{ filter.url_to_remove }}">
-              {%- assign min_value = filter.min_value.value | default: 0 -%}
-              {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
-              {{ min_value | money }} - {{ max_value | money }} X
-            </a>
-          </p>
+    {%- if total_active_values > 0 -%}
+      <div class="collection--summary-wrapper">
+        <p class="collection--summary-title">Filters Summary</p>
+        <p class="collection--clear-all"><a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">Clear all</a></p>
+    {%- endif -%}
+      {%- for filter in collection.filters -%}
+        {%- if filter.type == "price_range" -%}
+          {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+            <p>
+              <a href="{{ filter.url_to_remove }}">
+                {%- assign min_value = filter.min_value.value | default: 0 -%}
+                {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+                {{ min_value | money }} - {{ max_value | money }} X
+              </a>
+            </p>
+          {%- endif -%}
+        {%- else -%}
+          {%- for filter_value in filter.active_values -%}
+            <p>
+              <a href="{{ filter_value.url_to_remove }}">
+                {{ filter.label }}: {{ filter_value.label }} X
+              </a>
+            </p>
+          {%- endfor -%}
         {%- endif -%}
-      {%- else -%}
-        {%- for filter_value in filter.active_values -%}
-          <p>
-            <a href="{{ filter_value.url_to_remove }}">
-              {{ filter.label }}: {{ filter_value.label }} X
-            </a>
-          </p>
-        {%- endfor -%}
-      {%- endif -%}
-    {%- endfor -%}
+      {%- endfor -%}
+    {%- if total_active_values > 0 -%}
+      </div>
+    {%- endif -%}
   </div>
 </form>
