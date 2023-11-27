@@ -1,4 +1,5 @@
 <form class="collection page-width">
+  <div class="collection--filters">
   {%- for filter in collection.filters -%}
     <details>
       <summary>
@@ -147,7 +148,7 @@
       </div>
     </details>
   {%- endfor -%}
-
+  </div>
   <div>
     <p><a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">Clear all</a></p>
     <p>Filters Summary</p>
@@ -175,3 +176,19 @@
     {%- endfor -%}
   </div>
 </form>
+
+<script>
+  const parent = document.querySelector(".collection--filters");
+  const detailsElements = parent.querySelectorAll("details");
+  detailsElements.forEach((detail) => {
+    detail.addEventListener("click", function (e) {
+      detailsElements.forEach( element => {
+        if(element !== this){
+          console.log('element', element);
+          element.removeAttribute("open");
+        }
+      })
+    });
+  });
+
+</script>
