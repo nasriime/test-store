@@ -6,8 +6,17 @@ form{
             flex-direction: column;
         }
 
+        #ProductCountDesktop{
+            margin-left: auto;
+        }
+
         .collection--filters{
             display: flex;
+            align-items: baseline;
+
+            &-title{
+                margin-right: 15px;
+            }
 
             details{
                 margin-right: 15px;

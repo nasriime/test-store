@@ -2,8 +2,15 @@ form.collection.page-width {
   display: flex;
   flex-direction: column;
 }
+form.collection #ProductCountDesktop {
+  margin-left: auto;
+}
 form.collection .collection--filters {
   display: flex;
+  align-items: baseline;
+}
+form.collection .collection--filters-title {
+  margin-right: 15px;
 }
 form.collection .collection--filters details {
   margin-right: 15px;
