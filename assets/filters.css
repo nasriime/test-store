@@ -1,3 +1,7 @@
+html, body {
+  overflow: hidden;
+}
+
 form.collection.page-width {
   display: flex;
   flex-direction: column;
@@ -21,20 +25,34 @@ form.collection #ProductCountDesktop {
 form.collection .collection--filters {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 form.collection .collection--filters-title {
   margin-right: 15px;
 }
 form.collection .collection--filters details {
+  position: relative;
   margin-right: 15px;
 }
-form.collection .collection--filters details > div {
+form.collection .collection--filters details .filter-details {
   position: absolute;
   background: #fff;
   z-index: 2;
   border: 1px solid #000;
   padding: 10px 40px 25px;
   border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 1s ease;
+}
+@media screen and (max-width: 500px) {
+  form.collection .collection--filters details .filter-details {
+    padding: 10px 20px 25px;
+  }
+}
+form.collection .collection--filters details[open] .filter-details {
+  visibility: visible;
+  opacity: 1;
 }
 form.collection .collection--filters details ul {
   list-style: none;
