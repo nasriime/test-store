@@ -47,8 +47,11 @@ form.collection .collection--filters details .filter-details {
 }
 @media screen and (max-width: 500px) {
   form.collection .collection--filters details .filter-details {
-    padding: 10px 20px 25px;
+    padding: 10px 17px 25px;
   }
+}
+form.collection .collection--filters details .filter-details li label {
+  font-size: 14px;
 }
 form.collection .collection--filters details[open] .filter-details {
   visibility: visible;
